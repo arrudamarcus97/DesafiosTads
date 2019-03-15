@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <style>
+            .background-input{
+                background-color: transparent;
+                border: 1px solid #022e40;
+            }
+            
+            .col-md-12{
+                height: 800px;
+            }
+
+            .font-text {
+                font-size: 20px;
+                font-family: Arial, sans-serif;
+                font-weight: 600;
+            }
+        </style>
+        <script>
+            function calculoJuros(){
+                var juros = parseFloat(document.getElementById("juros").value);
+                var dataVenc1 = new Date(document.getElementById("dataVenc1").value);
+                var multa = parseFloat(document.getElementById("multa").value);
+                var dataHoje = new Date(document.getElementById("dataHoje").value);
+
+                var valor1 = parseFloat(document.getElementById("valorDaParcela1").value);
+                var diasDeAtraso1 = ((dataHoje - dataVenc1)/ 8.64e+7);
+
+                var multa1 = document.getElementById("ValorDaMulta1").innerHTML = valor1 * (multa/100);
+                var Atraso1 = document.getElementById("diasDeAtraso1").innerHTML = diasDeAtraso1; 
+                var valorJuros1 = document.getElementById("valorDoJuros1").innerHTML = ((((juros/30) / 100) * valor1) * diasDeAtraso1);
+                var totalApagar1 = document.getElementById("valorTotalPagar1").innerHTML = parseFloat(((((juros/30) / 100) * valor1) * diasDeAtraso1)+ ((multa/100) * valor1)+ parseFloat(valor1));
+
+                var dataVenc2 = new Date(document.getElementById("dataVenc2").value);
+                var valor2 = parseFloat(document.getElementById("valorDaParcela2").value);
+                var diasDeAtraso2 = ((dataHoje - dataVenc2)/ 8.64e+7);
+
+                var multa2 = document.getElementById("ValorDaMulta2").innerHTML =valor2 * (multa/100);
+                var Atraso2 = document.getElementById("diasDeAtraso2").innerHTML = diasDeAtraso2; 
+                var valorJuros2 = document.getElementById("valorDoJuros2").innerHTML = ((((juros/30) / 100) * valor2) * diasDeAtraso2);
+                var totalApagar2 =document.getElementById("valorTotalPagar2").innerHTML = parseFloat(((((juros/30) / 100) * valor2) * diasDeAtraso2)+ ((multa/100) * valor2)+ parseFloat(valor2)); 
+
+                var dataVenc3 = new Date(document.getElementById("dataVenc2").value);
+                var valor3 = parseFloat(document.getElementById("valorDaParcela2").value);
+                var diasDeAtraso3 = ((dataHoje - dataVenc3)/ 8.64e+7);
+
+                var multa3 = document.getElementById("ValorDaMulta3").innerHTML = valor3 * (multa/100);
+                var Atraso3 = document.getElementById("diasDeAtraso3").innerHTML = diasDeAtraso3; 
+                var valorJuros3 = document.getElementById("valorDoJuros3").innerHTML =  ((((juros/30) / 100) * valor3) * diasDeAtraso3);
+                var totalApagar3 = document.getElementById("valorTotalPagar3").innerHTML = parseFloat(((((juros/30) / 100) * valor3) * diasDeAtraso3)+ ((multa/100) * valor3)+ parseFloat(valor3));
+
+                document.getElementById("totalDaMulta").innerHTML = multa1 + multa2 + multa3;
+                document.getElementById("totalDoAtraso").innerHTML = Atraso1 + Atraso2 + Atraso3;
+                document.getElementById("totalDeJuros").innerHTML = valorJuros1 + valorJuros2 + valorJuros3;
+                var total1 = totalApagar1 + totalApagar2 + totalApagar3;  
+                var total2 = total1.toFixed(2);
+                document.getElementById("totalAPagar").innerHTML = total2;
+
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center clone" style="background-color: #4fb89e">
+                    
+                    <h2 class="text-center">Calculo de Parcelas</h2>
+                   
+                    <p class="font-text">Juros p/ mês (%)</p>
+                    <input class="background-input" type="number" id="juros">
+
+                    <p class="font-text">Multa p/ atraso (%)</p>
+                    <input class="background-input" type="number" id="multa">
+
+                    <p class="font-text">Data:</p>
+                    <input class="background-input" type="date" id="dataHoje">
+
+                    <div class="paragrafo1">
+                        <span class="font-text">Valor das parcelas</span>
+                        <input class="background-input valorDaParcela1" type="number" id="valorDaParcela1">
+
+                        <span class="font-text">Data de Vencimento</span>
+                        <input class="background-input dataVenc1" type="date" id="dataVenc1">
+                
+                        <span class="font-text">Multa</span>
+                        <span id="ValorDaMulta1">-</span>
+                                    
+                        <span class="font-text">Dias de Atraso</span>
+                        <span id="diasDeAtraso1">-</span>
+                    
+                        <span class="font-text">Juros: </span>
+                        <span id="valorDoJuros1">-</span>
+                    
+                        <span class="font-text">Total: </span>
+                        <span id="valorTotalPagar1"></span>
+                    
+                    </div>
+
+                    <div class="paragrafo2">
+                        <span class="font-text">Valor das parcelas</span>
+                        <input class="background-input valorDaParcela" type="number" id="valorDaParcela2">
+
+                        <span class="font-text">Data de Vencimento</span>
+                        <input class="background-input dataVenc" type="date" id="dataVenc2">
+                
+                        <span class="font-text">Multa</span>
+                        <span id="ValorDaMulta2">-</span>
+                                    
+                        <span class="font-text">Dias de Atraso</span>
+                        <span id="diasDeAtraso2">-</span>
+                    
+                        <span class="font-text">Juros: </span>
+                        <span id="valorDoJuros2">-</span>
+                    
+                        <span class="font-text">Total: </span>
+                        <span id="valorTotalPagar2"></span>
+                        
+                        
+                    </div>
+
+                    <div class="paragrafo3">
+                        <span class="font-text">Valor das parcelas</span>
+                        <input class="background-input valorDaParcela" type="number" id="valorDaParcela3">
+
+                        <span class="font-text">Data de Vencimento</span>
+                        <input class="background-input dataVenc" type="date" id="dataVenc3">
+                
+                        <span class="font-text">Multa</span>
+                        <span id="ValorDaMulta3">-</span>
+                                    
+                        <span class="font-text">Dias de Atraso</span>
+                        <span id="diasDeAtraso3">-</span>
+                    
+                        <span class="font-text">Juros: </span>
+                        <span id="valorDoJuros3">-</span>
+                    
+                        <span class="font-text">Total: </span>
+                        <span id="valorTotalPagar3"></span>
+                        
+                    </div>
+
+                    <div id="valoresTotais">
+                        <label id="totalDaMulta">-</label>
+                        <label id="totalDoAtraso">-</label>
+                        <label id="totalDeJuros">-</label>
+                        <label id="totalAPagar">-</label>
+                    </div>
+            
+                    <p><button class="btn btn-success" onclick="calculoJuros()">Calcular</button></p>
+                </div>
+            </div>  
+        </div>
+    </body>
+</html>
