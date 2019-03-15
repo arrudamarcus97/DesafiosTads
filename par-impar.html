@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    </head>
+    <script>
+ let array = new Array();
+    function Adicionar(){
+        let mostrarNumero = document.getElementById("mostrarNumero");
+        let addNumero = parseFloat(document.getElementById('numero').value);
+        // console.log(addNumero);
+
+        if(addNumero != 0){
+            array.push(addNumero);
+
+            mostrarNumero.innerText += numero+",";
+            document.getElementById("numero").value="";
+        }
+    
+       // document.getElementById('mostrarNumero').innerHTML = addNumero;
+    }
+
+
+    function ImprimirPar(){
+
+          document.getElementById("par").innerText = "";
+
+          for(let i = 0; i< array.length; i++){
+            if(array[i] % 2 == 0){
+                document.getElementById("par").innerText += array[i] + ",";
+            }
+
+          }
+
+    }
+
+    function ImprimirImpar(){
+        document.getElementById("impares").innerText = "";
+
+        for(let i = 0;i<array.length; i++){
+            if(array[i] % 2 == 1){
+                document.getElementById("impares").innerText += array[i] + ",";
+
+            }
+        }
+    }
+    </script>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+
+                <div class="col-md-4">
+                <h1>Pares / Ímpares</h1>
+
+                <input type="number" id="numero">
+                <button type="input" onclick="Adicionar()">Adicionar</button>                
+                <div id="mostrarNumero"></div>
+                <br>
+                   
+                <button type="input" onclick="ImprimirPar()">Imprimir Pares</button>
+                <div id="par"></div>
+                <br> 
+                <button type="input" onclick="ImprimirImpar()">Imprimir Ímpares</button>
+                <div id="impares"></div>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

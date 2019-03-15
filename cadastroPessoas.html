@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    </head>
+    <script>
+        let arrayNome = new Array();
+    function Adicionar(){
+        let nome = document.getElementById('nome').value;
+        // alert("adicionado");
+        // console.log(nome);
+       
+        arrayNome.push(nome);
+        document.getElementById("nome").value = "";
+   
+    }
+
+    function pesquisaNomes(){
+        // let nome = document.getElementById("nome");
+        console.log(document.getElementById("nome").value );
+        console.log(arrayNome[0]);
+        
+        for(let i = 0;i< arrayNome.length; i++){
+            if(arrayNome[i].indexOf(document.getElementById("buscaNome").value) != -1){
+               window.alert("blah blah");
+
+               document.getElementById("mostrarResultado").innerHTML = arrayNome[i];
+            }
+        }
+
+        
+
+        document.getElementById('mostrarResultado').innerHTML;
+      
+   
+
+        }
+    </script>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+
+                <div class="col-md-4">
+                <h2>Cadastro</h2>
+
+                <input type="text" id="nome">
+                <button class="btn btn-success" type="input" onclick="Adicionar()">Adicionar</button>
+                
+                <input type="text" id="buscaNome">
+                <button class="btn btn-success" type="input" onclick="pesquisaNomes()">Buscar</button>
+                <div id="mostrarResultado"></div>
+                <br> 
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

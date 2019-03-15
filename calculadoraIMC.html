@@ -1,0 +1,121 @@
+<html>
+    <head>
+            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+    <script>
+        // function SomenteNumero(e){
+        //     var tecla=(window.event)?event.keyCode:e.which;   
+        //     if((tecla>47 && tecla<58))
+        //         return true;
+        //     else{
+        //         if (tecla==8 || tecla==0) return true;
+        //            else  return false;
+        //         }
+        //     }
+
+        var res = 0;
+        function CalcIMC(){
+            var peso = document.getElementById("peso");
+            var altura = document.getElementById("altura");
+           
+            res = parseFloat(peso.value) / (parseFloat(altura.value) * parseFloat(altura.value));
+       
+            
+            if(res < 18){
+                console.log('abaixo do peso' +"  "+  res)
+
+            } else if(res < 25){
+                console.log('ideal' +"  "+ res)
+                x = 'ideal' +"  "+ res;
+            } else if(res < 30 && res >  25){
+                console.log('sobre peso' +"  "+ res)
+
+            } else if(res <35 && res>30){
+                console.log('obesidade 1'+"  "+ res)
+
+            } else if(res < 40 && res > 35){
+                console.log('obesidade 2'+"  "+ res)
+
+            } else if(res > 40){
+                console.log('obesidade 3'+"  "+ res)
+
+            }
+           
+
+           
+            document.getElementById("resp").innerHTML = res.toFixed(4);
+            document.getElementById("class").innerHTML = "x";
+            document.getElementById("corRes").style.backgroundColor =  "#4fb89e";
+        }
+
+        
+        function Classificacao(){
+            console.log(res);
+            // var res = peso / (altura * altura)
+            
+            if(res < 18){
+                document.getElementById("corRes").style.backgroundColor = "red";
+                document.getElementById("class").innerHTML = "abaixo do peso";
+
+            } else if (res >= 18 && res < 25){
+                document.getElementById("corRes")
+            .style.backgroundColor = "blue";
+            document.getElementById("class").innerHTML = "ideal";
+
+            } else if (res >= 25 && res < 30){
+                document.getElementById("corRes").style.backgroundColor = "yellow";
+                document.getElementById("class").innerHTML = "sobre peso";
+            
+            } else if(res >= 30 && res < 35){
+                document.getElementById("corRes").style.backgroundColor = "orange";
+                document.getElementById("class").innerHTML = "obesidade 1";
+
+            } else if(res >=  35 && res < 40){
+                document.getElementById("corRes").style.backgroundColor = "purple";
+                document.getElementById("class").innerHTML = "obesidade 2";
+
+            } else{
+                document.getElementById("corRes").style.backgroundColor = "black";
+                document.getElementById("class").innerHTML = "obesidade 3";
+            }
+        }
+        
+    </script>        
+    </head>
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 background">
+
+                </div>
+                <div class="col-md-6 calc">
+                    <form>
+                    <h2>Calculo de Média</h2>
+
+                    <p class="font-p">Peso: </p>
+                    <input type="text"  placeholder="peso" id="peso" value="">
+                    
+                    <p class="font-p">Altura: </p>
+                    <input type="text"  placeholder="altura"  id="altura" value="">
+
+                    <div id="corRes">
+                        <span id="resp" hidden></span>
+                        <p id="class"></p>
+                    </div>
+                    <p><input class="btn btn-success" type="button" value="Calculo IMC" onclick="CalcIMC()"></p>
+                  
+                    <p><input class="btn btn-success" id="Class" type="button" value="Classificacao" onclick="Classificacao()"></p>
+                    
+                </div>
+                <div class="col-md-3 background">
+
+                </div>
+            </form>
+            </div>
+        </div>
+    </body>
+</html>

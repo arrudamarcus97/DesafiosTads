@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <style>
+            .background-input{
+                background-color: transparent;
+                border: 1px solid #022e40;
+            }
+            
+            .col-md-8{
+                height: 800px;
+            }
+
+            .font-text {
+                font-size: 20px;
+                font-family: Arial, sans-serif;
+                font-weight: 600;
+            }
+        </style>
+    
+        <script>
+            function calculoJuros(){
+                var juros = parseFloat(document.getElementById("juros").value);
+                var dataVenc = new Date(document.getElementById("dataVenc").value);
+                var multa = parseFloat(document.getElementById("multa").value);
+                var dataHoje = new Date(document.getElementById("dataHoje").value);
+                var valor = parseFloat(document.getElementById("valorDaParcela").value);
+                var diasDeAtraso = ((dataHoje - dataVenc)/ 8.64e+7);
+
+                document.getElementById("ValorDaMulta").innerHTML = " "+ (multa/100) * valor;
+                document.getElementById("diasDeAtraso").innerHTML = diasDeAtraso; 
+                document.getElementById("valorDoJuros").innerHTML = " "+ ((((juros/30) / 100) * valor) * diasDeAtraso);
+                document.getElementById("valorTotalPagar").innerHTML = " "+ parseFloat(((((juros/30) / 100) * valor) * diasDeAtraso)+ ((multa/100) * valor)+ parseFloat(valor)); 
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2" style="background-color: #022e40"></div>
+                <div class="col-md-8 text-center clone" style="background-color: #4fb89e">
+                    
+                    <h2 class="text-center">Calculo de Parcelas</h2>
+                   
+                    <p class="font-text">Juros p/ mês</p>
+                    <input class="background-input" type="number" id="juros">
+
+                    <p class="font-text">Multa p/ atraso</p>
+                    <input class="background-input" type="number" id="multa">
+
+                    <p class="font-text">Data:</p>
+                    <input class="background-input" type="date" id="dataHoje">
+
+                    <p class="font-text">Data de Vencimento</p>
+                    <input class="background-input" type="date" id="dataVenc">
+
+                    <p class="font-text">Valor das parcelas</p>
+                    <input class="background-input" type="number" id="valorDaParcela">
+                
+                    <p class="font-text">Multa</p>
+                    <span id="ValorDaMulta"></span>
+                                
+                    <p class="font-text">Dias de Atraso</p>
+                    <span id="diasDeAtraso"></span>
+                
+                    <p class="font-text">Juros: </p>
+                    <span id="valorDoJuros"></span>
+                
+                    <p class="font-text">Total: </p>
+                    <span id="valorTotalPagar"></span>
+                    <p><button class="btn btn-success" onclick="calculoJuros()">Calcular</button></p>
+                    
+                </div>
+                <div class="col-md-2 clone1" style="background-color: #022e40"></div>
+            </div>  
+        </div>
+    </body>
+</html>
